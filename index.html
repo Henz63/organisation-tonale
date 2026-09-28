@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Organisation tonale</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#f4f4f4;color:#111;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+.app{width:100%;max-width:405px;margin:0 auto;background:#fff;border:1px solid #d8d8d8;border-radius:10px;padding:0 14px 14px}
+h1{font-size:27px;line-height:1;margin:4px 0 7px;text-align:center;font-weight:700}
+h2{font-size:19px;line-height:1.15;margin:0 0 9px;font-weight:700}
+.sec{border-top:1px solid #ddd;padding-top:14px;margin-top:14px}
+label{font-size:14px;color:#0074b8;display:block;margin:6px 0 4px}
+input,select{font:inherit;width:100%;height:40px;padding:6px 9px;border:1px solid #aaa;border-radius:7px;background:#fff}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 92px 34px;gap:5px}
+.measure{display:grid;grid-template-columns:minmax(0,1fr) 58px 34px 34px 34px;gap:5px;margin:7px 0}
+button{font:inherit}
+.measure button,.pm{height:40px;border:0;background:#eee;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0}
+.pm{font-weight:700;font-size:19px}
+.eye{width:34px;height:40px;border:0;background:#eee;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0;color:#111}.eye svg{width:20px;height:20px;display:block}
+.del{font-size:16px;color:#0069aa}
+button.add{margin-top:8px;padding:8px 12px;height:39px;border:0;background:#111;color:#fff;border-radius:7px;font-weight:700}
+.status{background:#eee;padding:10px;border-radius:6px;font-size:14px;line-height:1.18;margin-top:10px}
+.status em{display:block;font-size:14px;line-height:1.16}
+.wheelWrap{border-top:1px solid #ddd;margin-top:14px;padding-top:14px}
+#wheel{width:100%;height:auto;display:block}
+.attention{border-top:1px solid #ddd;padding-top:13px;margin-top:14px;font-size:14px;line-height:1.28;color:#666}
+.attention h3{font-size:15px;color:#111;margin:0 0 3px}
+.contrast{border-top:1px solid #ddd;padding-top:14px;margin-top:14px}
+.contrast label{color:#666}
+.contrast select{height:48px}
+.contrastResult{margin-top:9px;padding:14px 8px;background:#eee;border:1px solid #ccc;border-radius:7px;text-align:center;font-size:22px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+<h1>ORGANISATION TONALE</h1>
+
+<div class="sec">
+<h2>1. Valeur prioritaire</h2>
+<label>Nom</label>
+<input value="Valeur prioritaire">
+<label>Zone initiale</label>
+<select><option>ZV (0 IL)</option></select>
+</div>
+
+<div class="sec">
+<h2>2. Dynamique utile</h2>
+<label>Borne basse</label>
+<div class="row">
+<input value="Borne basse"><input value="-3"><button class="pm">±</button>
+</div>
+<label>Borne haute</label>
+<div class="row">
+<input value="Borne haute"><input value="3"><button class="pm">±</button>
+</div>
+</div>
+
+<div class="sec">
+<h2>3. Luminances importantes</h2>
+<div class="measure"><input value="Mesure 1"><input value="-1"><button class="pm">±</button><button class="eye" aria-label="Afficher ou masquer la mesure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.5-5.5 9.8-5.5S21.8 12 21.8 12 18.5 17.5 12 17.5 2.2 12 2.2 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button class="del">×</button></div>
+<div class="measure"><input value="Mesure 2"><input value="1,5"><button class="pm">±</button><button class="eye" aria-label="Afficher ou masquer la mesure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.5-5.5 9.8-5.5S21.8 12 21.8 12 18.5 17.5 12 17.5 2.2 12 2.2 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button class="del">×</button></div>
+<div class="measure"><input value="Mesure 3"><input value="2,5"><button class="pm">±</button><button class="eye" aria-label="Afficher ou masquer la mesure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.5-5.5 9.8-5.5S21.8 12 21.8 12 18.5 17.5 12 17.5 2.2 12 2.2 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button class="del">×</button></div>
+<button class="add">+ Ajouter une mesure</button>
+</div>
+
+<div class="sec">
+<div class="status">
+<b>Prioritaire :</b> Valeur prioritaire = 0 IL<br>
+<b>Dynamique utile :</b> -3 à +3 IL (+6 IL)<br>
+<em>Si la dynamique utile de la scène dépasse la plage dynamique du capteur (≈ 12 à 14 IL à la sensibilité la plus basse), des informations seront perdues.</em>
+</div>
+</div>
+
+<div class="wheelWrap">
+<svg id="wheel" viewBox="0 0 1000 700" aria-label="Roue">
+<rect width="1000" height="700" fill="#fff"/>
+<g id="wheel-base">
+<!-- arcs and radial guides -->
+<path d="M110 585 A390 390 0 0 1 890 585" fill="none" stroke="#222" stroke-width="5"/>
+<path d="M215 585 A285 285 0 0 1 785 585" fill="none" stroke="#888" stroke-width="2"/>
+<line x1="360" y1="585" x2="640" y2="585" stroke="#222" stroke-width="4"/>
+<circle cx="500" cy="585" r="9" fill="#222"/>
+</g>
+<g id="guides"></g>
+<g id="ticks"></g>
+<g id="labels"></g>
+<g id="rotation"></g>
+<g id="points"></g>
+</svg>
+</div>
+
+<div class="attention">
+<h3>Attention</h3>
+Les Zones I et IX se situent aux limites de la restitution des informations. Si vous souhaitez conserver des informations exploitables, il est recommandé d’éviter de franchir ces limites.
+</div>
+
+<div class="contrast">
+<h2>Contrastes</h2>
+<label>Valeur 1</label>
+<select><option></option></select>
+<label>Valeur 2</label>
+<select><option></option></select>
+<div class="contrastResult">−</div>
+</div>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const cx=500,cy=585,R=390,Ri=285;
+const zones=["Z0","ZI","ZII","ZIII","ZIV","ZV","ZVI","ZVII","ZVIII","ZIX","ZX"];
+const base=document.getElementById("guides");
+const ticks=document.getElementById("ticks");
+const labels=document.getElementById("labels");
+function polar(v,r){const a=(5-v)*Math.PI/10;return[cx+r*Math.cos(a),cy-r*Math.sin(a)]}
+function E(t,a,g){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e}
+function fmt(v){const n=Math.round(v*3),s=n>0?"+":"-",a=Math.abs(n),w=Math.floor(a/3),r=a%3;return n===0?"0":s+w+(r===1?",3":r===2?",7":"")}
+for(let i=0;i<11;i++){
+  const v=i-5,[x1,y1]=polar(v,Ri),[x2,y2]=polar(v,R);
+  E("line",{x1,y1,x2,y2,stroke:"#aaa","stroke-width":7,opacity:.6},base);
+}
+for(let n=0;n<31;n++){
+  const v=-5+n/3,major=n%3===0,[x1,y1]=polar(v,R+4),[x2,y2]=polar(v,R+(major?46:25));
+  E("line",{x1,y1,x2,y2,stroke:major?"#111":"#777","stroke-width":major?4:2},ticks);
+}
+for(let i=0;i<11;i++){
+  const v=i-5,[x,y]=polar(v,R+82);
+  if(v===0){E("rect",{x:x-16,y:y-21,width:32,height:42,fill:"#111"},labels);E("text",{x,y:y+9,fill:"#fff","font-size":25,"font-weight":700,"text-anchor":"middle"},labels).textContent="0"}
+  else E("text",{x,y:y+9,fill:"#111","font-size":25,"font-weight":700,"text-anchor":"middle"},labels).textContent=fmt(v);
+  const [qx,qy]=polar(v,Ri-35);
+  E("text",{x:qx,y:qy+8,fill:"#111","font-size":21,"font-weight":700,"text-anchor":"middle"},labels).textContent=zones[i];
+}
+const outer=185,inner=125;
+const d=`M ${cx-outer} ${cy} A ${outer} ${outer} 0 0 1 ${cx+outer} ${cy} L ${cx+inner} ${cy} A ${inner} ${inner} 0 0 0 ${cx-inner} ${cy} Z`;
+const rotation=document.getElementById("rotation");
+E("path",{d,fill:"#fff"},rotation);
+E("text",{x:cx,y:cy-110,fill:"#111","font-size":18,"font-weight":700,"text-anchor":"middle","letter-spacing":"1.5"},rotation).textContent="ROTATION";
+</script>
+</body>
+</html>
